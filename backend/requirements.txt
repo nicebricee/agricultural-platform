@@ -1,0 +1,52 @@
+# Core Framework
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Database Clients  
+supabase
+neo4j
+asyncpg
+
+# AI Integration
+openai
+
+# Data Validation
+pydantic
+pydantic-settings
+
+# Environment
+python-dotenv
+
+# HTTP Client
+httpx
+aiohttp
+
+# Natural Language
+nltk
+
+# Caching
+aiocache
+
+# Security
+python-jose[cryptography]
+passlib[bcrypt]
+email-validator
+
+# Date/Time
+python-dateutil
+
+# Logging
+loguru
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+
+# Data Processing
+pandas
+numpy
+
+# Encryption
+cryptography

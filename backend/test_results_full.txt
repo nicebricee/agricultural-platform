@@ -1,0 +1,239 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.11.9, pytest-8.4.1, pluggy-1.6.0 -- /Users/brice/.pyenv/versions/3.11.9/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/brice/Ontology-Pipeline/backend
+plugins: anyio-4.9.0, cov-6.2.1, tdd-guard-0.5.2, asyncio-1.0.0
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 75 items
+
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_root_endpoint PASSED [  1%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_health_endpoint PASSED [  2%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_sample_queries_endpoint PASSED [  4%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_system_info_endpoint PASSED [  5%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_valid_query FAILED [  6%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_empty_query PASSED [  8%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_long_query PASSED [  9%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_invalid_max_results PASSED [ 10%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_no_body PASSED [ 12%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_cors_headers PASSED [ 13%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_api_documentation PASSED [ 14%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_concurrent_requests PASSED [ 16%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_error_handling PASSED [ 17%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_database_connection_status PASSED [ 18%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_request_validation PASSED [ 20%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_response_headers PASSED [ 21%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_timeout_handling PASSED [ 22%]
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_api_versioning PASSED [ 24%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_general_query_generation PASSED [ 25%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_impact_query_generation PASSED [ 26%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_relationship_query_generation PASSED [ 28%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_pattern_matching PASSED [ 29%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_graph_traversal PASSED [ 30%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_node_identification PASSED [ 32%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_aggregation_query PASSED [ 33%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_optional_match PASSED [ 34%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_where_clause_generation PASSED [ 36%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_limit_enforcement PASSED [ 37%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_cypher_injection_prevention PASSED [ 38%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_path_query_generation PASSED [ 40%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_collect_aggregation FAILED [ 41%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_comparison_query FAILED [ 42%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_location_based_query PASSED [ 44%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_empty_keywords PASSED [ 45%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_explain_query FAILED [ 46%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_multi_hop_traversal FAILED [ 48%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_node_property_filtering PASSED [ 49%]
+tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_relationship_properties FAILED [ 50%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_basic_extraction PASSED [ 52%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_agricultural_terms_prioritized PASSED [ 53%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_stop_words_removed PASSED [ 54%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_numbers_extracted PASSED [ 56%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_query_intent_detection PASSED [ 57%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_max_keywords_limit PASSED [ 58%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_empty_query PASSED [ 60%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_special_characters PASSED [ 61%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_impact_query PASSED [ 62%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_trend_query PASSED [ 64%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_comparison_query PASSED [ 65%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_prediction_query FAILED [ 66%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_ranking_query PASSED [ 68%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_location_query PASSED [ 69%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_aggregation_query PASSED [ 70%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_general_query PASSED [ 72%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_agricultural_locations PASSED [ 73%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_equipment_terms PASSED [ 74%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_weather_terms PASSED [ 76%]
+tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_economic_terms PASSED [ 77%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_general_query_generation PASSED [ 78%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_impact_query_generation PASSED [ 80%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_trend_query_generation PASSED [ 81%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_comparison_query_generation PASSED [ 82%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_ranking_query_generation PASSED [ 84%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_location_query_generation FAILED [ 85%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_aggregation_query_generation PASSED [ 86%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_table_identification PASSED [ 88%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_sql_injection_prevention PASSED [ 89%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_query_limit_enforcement PASSED [ 90%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_join_logic PASSED [ 92%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_empty_keywords PASSED [ 93%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_spatial_query_generation FAILED [ 94%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_explain_query PASSED [ 96%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_weather_impact_query PASSED [ 97%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_production_trend_query PASSED [ 98%]
+tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_organic_comparison_query PASSED [100%]
+
+=================================== FAILURES ===================================
+______________ TestAPIEndpoints.test_search_endpoint_valid_query _______________
+tests/integration/test_api_endpoints.py:97: in test_search_endpoint_valid_query
+    assert response.status_code in [200, 503]
+E   assert 500 in [200, 503]
+E    +  where 500 = <Response [500 Internal Server Error]>.status_code
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Processing search query: Show corn production in Iowa\n", "record": {"elapsed": {"repr": "0:00:01.450673", "seconds": 1.450673}, "exception": null, "extra": {}, "file": {"name": "endpoints.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/api/endpoints.py"}, "function": "search", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 50, "message": "Processing search query: Show corn production in Iowa", "module": "endpoints", "name": "app.api.endpoints", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:12.485829+08:00", "timestamp": 1756078812.485829}}}
+{"text": "Search error: 503: Database connections not initialized\n", "record": {"elapsed": {"repr": "0:00:01.450760", "seconds": 1.45076}, "exception": null, "extra": {"exc_info": true}, "file": {"name": "endpoints.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/api/endpoints.py"}, "function": "search", "level": {"icon": "❌", "name": "ERROR", "no": 40}, "line": 127, "message": "Search error: 503: Database connections not initialized", "module": "endpoints", "name": "app.api.endpoints", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:12.485916+08:00", "timestamp": 1756078812.485916}}}
+{"text": "HTTP Request: POST http://test/api/v1/search \"HTTP/1.1 500 Internal Server Error\"\n", "record": {"elapsed": {"repr": "0:00:01.450910", "seconds": 1.45091}, "exception": null, "extra": {}, "file": {"name": "__init__.py", "path": "/Users/brice/.pyenv/versions/3.11.9/lib/python3.11/logging/__init__.py"}, "function": "callHandlers", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 1706, "message": "HTTP Request: POST http://test/api/v1/search \"HTTP/1.1 500 Internal Server Error\"", "module": "__init__", "name": "logging", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:12.486066+08:00", "timestamp": 1756078812.486066}}}
+------------------------------ Captured log call -------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/v1/search "HTTP/1.1 500 Internal Server Error"
+______________ TestCypherQueryGenerator.test_collect_aggregation _______________
+tests/unit/test_cypher_generator.py:206: in test_collect_aggregation
+    assert "collect(" in cypher or "collect distinct" in cypher
+E   assert ('collect(' in "\n            match (s:state)-[:has_measurement]->(m:measurement)\n            where (tolower(s.name) contains 'farms' or tolower(m.metric_type) contains 'farms') or (tolower(s.name) contains 'crops' or tolower(m.metric_type) contains 'crops') or (tolower(s.name) contains 'list' or tolower(m.metric_type) contains 'list') or (tolower(s.name) contains 'all' or tolower(m.metric_type) contains 'all')\n            optional match (s)-[:in_region]->(r:region)\n            optional match (s)-[:has_climate]->(c:climate)\n            optional match (s)-[:in_belt]->(b:agriculturalbelt)\n            return s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            order by m.year desc, m.value desc\n            limit 50\n        " or 'collect distinct' in "\n            match (s:state)-[:has_measurement]->(m:measurement)\n            where (tolower(s.name) contains 'farms' or tolower(m.metric_type) contains 'farms') or (tolower(s.name) contains 'crops' or tolower(m.metric_type) contains 'crops') or (tolower(s.name) contains 'list' or tolower(m.metric_type) contains 'list') or (tolower(s.name) contains 'all' or tolower(m.metric_type) contains 'all')\n            optional match (s)-[:in_region]->(r:region)\n            optional match (s)-[:has_climate]->(c:climate)\n            optional match (s)-[:in_belt]->(b:agriculturalbelt)\n            return s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            order by m.year desc, m.value desc\n            limit 50\n        ")
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating Cypher for query type: general\n", "record": {"elapsed": {"repr": "0:00:02.029129", "seconds": 2.029129}, "exception": null, "extra": {}, "file": {"name": "cypher_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/cypher_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 106, "message": "Generating Cypher for query type: general", "module": "cypher_query_generator", "name": "app.services.cypher_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.064285+08:00", "timestamp": 1756078813.064285}}}
+________________ TestCypherQueryGenerator.test_comparison_query ________________
+tests/unit/test_cypher_generator.py:219: in test_comparison_query
+    assert "certification_type" in cypher
+E   AssertionError: assert 'certification_type' in '\n                match (s:state)-[:has_measurement]->(m:measurement)\n                where m.year >= date().year - 3\n                with s.name as state,\n                     count(distinct m.metric_type) as metric_count,\n                     avg(m.value) as avg_value\n                return state,\n                       metric_count,\n                       round(avg_value, 2) as average_value\n                order by avg_value desc\n                limit 50\n            '
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating Cypher for query type: comparison\n", "record": {"elapsed": {"repr": "0:00:02.032894", "seconds": 2.032894}, "exception": null, "extra": {}, "file": {"name": "cypher_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/cypher_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 106, "message": "Generating Cypher for query type: comparison", "module": "cypher_query_generator", "name": "app.services.cypher_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.068050+08:00", "timestamp": 1756078813.06805}}}
+_________________ TestCypherQueryGenerator.test_explain_query __________________
+tests/unit/test_cypher_generator.py:261: in test_explain_query
+    assert "equipment" in explanation.lower()
+E   AssertionError: assert 'equipment' in 'this graph query matches graph patterns with optional relationships including supplier relationships with aggregations collecting related entities filtered by conditions sorted in descending order'
+E    +  where 'this graph query matches graph patterns with optional relationships including supplier relationships with aggregations collecting related entities filtered by conditions sorted in descending order' = <built-in method lower of str object at 0x11e6e8d30>()
+E    +    where <built-in method lower of str object at 0x11e6e8d30> = 'This graph query matches graph patterns with optional relationships including supplier relationships with aggregations collecting related entities filtered by conditions sorted in descending order'.lower
+______________ TestCypherQueryGenerator.test_multi_hop_traversal _______________
+tests/unit/test_cypher_generator.py:275: in test_multi_hop_traversal
+    assert "*1..3" in cypher or "[*..3]" in cypher or "1..3" in cypher
+E   AssertionError: assert ('*1..3' in '\n            MATCH (s1:State)-[:BORDERS]->(s2:State)\n            MATCH (s1)-[:HAS_MEASUREMENT]->(m1:Measurement)\n            MATCH (s2)-[:HAS_MEASUREMENT]->(m2:Measurement)\n            WHERE m1.metric_type = m2.metric_type \n                  AND m1.year = m2.year\n                  AND m1.year >= date().year - 5\n            WITH s1, s2, m1.metric_type as metric, m1.year as year,\n                 m1.value as origin_value, m2.value as neighbor_value,\n                 abs(m1.value - m2.value) / (m1.value + 0.01) * 100 as pct_difference\n            RETURN s1.name as origin_state,\n                   s2.name as neighboring_state,\n                   metric,\n                   year,\n                   round(origin_value) as origin_value,\n                   round(neighbor_value) as neighbor_value,\n                   round(pct_difference, 2) as percent_difference\n            ORDER BY year DESC, pct_difference DESC\n            LIMIT 50\n        ' or '[*..3]' in '\n            MATCH (s1:State)-[:BORDERS]->(s2:State)\n            MATCH (s1)-[:HAS_MEASUREMENT]->(m1:Measurement)\n            MATCH (s2)-[:HAS_MEASUREMENT]->(m2:Measurement)\n            WHERE m1.metric_type = m2.metric_type \n                  AND m1.year = m2.year\n                  AND m1.year >= date().year - 5\n            WITH s1, s2, m1.metric_type as metric, m1.year as year,\n                 m1.value as origin_value, m2.value as neighbor_value,\n                 abs(m1.value - m2.value) / (m1.value + 0.01) * 100 as pct_difference\n            RETURN s1.name as origin_state,\n                   s2.name as neighboring_state,\n                   metric,\n                   year,\n                   round(origin_value) as origin_value,\n                   round(neighbor_value) as neighbor_value,\n                   round(pct_difference, 2) as percent_difference\n            ORDER BY year DESC, pct_difference DESC\n            LIMIT 50\n        ' or '1..3' in '\n            MATCH (s1:State)-[:BORDERS]->(s2:State)\n            MATCH (s1)-[:HAS_MEASUREMENT]->(m1:Measurement)\n            MATCH (s2)-[:HAS_MEASUREMENT]->(m2:Measurement)\n            WHERE m1.metric_type = m2.metric_type \n                  AND m1.year = m2.year\n                  AND m1.year >= date().year - 5\n            WITH s1, s2, m1.metric_type as metric, m1.year as year,\n                 m1.value as origin_value, m2.value as neighbor_value,\n                 abs(m1.value - m2.value) / (m1.value + 0.01) * 100 as pct_difference\n            RETURN s1.name as origin_state,\n                   s2.name as neighboring_state,\n                   metric,\n                   year,\n                   round(origin_value) as origin_value,\n                   round(neighbor_value) as neighbor_value,\n                   round(pct_difference, 2) as percent_difference\n            ORDER BY year DESC, pct_difference DESC\n            LIMIT 50\n        ')
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating Cypher for query type: impact_analysis\n", "record": {"elapsed": {"repr": "0:00:02.041406", "seconds": 2.041406}, "exception": null, "extra": {}, "file": {"name": "cypher_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/cypher_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 106, "message": "Generating Cypher for query type: impact_analysis", "module": "cypher_query_generator", "name": "app.services.cypher_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.076562+08:00", "timestamp": 1756078813.076562}}}
+____________ TestCypherQueryGenerator.test_relationship_properties _____________
+tests/unit/test_cypher_generator.py:303: in test_relationship_properties
+    assert "SUPPLIES" in cypher or "supplies" in cypher.lower()
+E   assert ('SUPPLIES' in "\n            MATCH (s:State)-[:HAS_MEASUREMENT]->(m:Measurement)\n            WHERE (toLower(s.name) CONTAINS 'farms' OR toLower(m.metric_type) CONTAINS 'farms') OR (toLower(s.name) CONTAINS 'suppliers' OR toLower(m.metric_type) CONTAINS 'suppliers') OR (toLower(s.name) CONTAINS 'contract' OR toLower(m.metric_type) CONTAINS 'contract') OR (toLower(s.name) CONTAINS '2023' OR toLower(m.metric_type) CONTAINS '2023')\n            OPTIONAL MATCH (s)-[:IN_REGION]->(r:Region)\n            OPTIONAL MATCH (s)-[:HAS_CLIMATE]->(c:Climate)\n            OPTIONAL MATCH (s)-[:IN_BELT]->(b:AgriculturalBelt)\n            RETURN s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            ORDER BY m.year DESC, m.value DESC\n            LIMIT 50\n        " or 'supplies' in "\n            match (s:state)-[:has_measurement]->(m:measurement)\n            where (tolower(s.name) contains 'farms' or tolower(m.metric_type) contains 'farms') or (tolower(s.name) contains 'suppliers' or tolower(m.metric_type) contains 'suppliers') or (tolower(s.name) contains 'contract' or tolower(m.metric_type) contains 'contract') or (tolower(s.name) contains '2023' or tolower(m.metric_type) contains '2023')\n            optional match (s)-[:in_region]->(r:region)\n            optional match (s)-[:has_climate]->(c:climate)\n            optional match (s)-[:in_belt]->(b:agriculturalbelt)\n            return s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            order by m.year desc, m.value desc\n            limit 50\n        ")
+E    +  where "\n            match (s:state)-[:has_measurement]->(m:measurement)\n            where (tolower(s.name) contains 'farms' or tolower(m.metric_type) contains 'farms') or (tolower(s.name) contains 'suppliers' or tolower(m.metric_type) contains 'suppliers') or (tolower(s.name) contains 'contract' or tolower(m.metric_type) contains 'contract') or (tolower(s.name) contains '2023' or tolower(m.metric_type) contains '2023')\n            optional match (s)-[:in_region]->(r:region)\n            optional match (s)-[:has_climate]->(c:climate)\n            optional match (s)-[:in_belt]->(b:agriculturalbelt)\n            return s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            order by m.year desc, m.value desc\n            limit 50\n        " = <built-in method lower of str object at 0x1087f2390>()
+E    +    where <built-in method lower of str object at 0x1087f2390> = "\n            MATCH (s:State)-[:HAS_MEASUREMENT]->(m:Measurement)\n            WHERE (toLower(s.name) CONTAINS 'farms' OR toLower(m.metric_type) CONTAINS 'farms') OR (toLower(s.name) CONTAINS 'suppliers' OR toLower(m.metric_type) CONTAINS 'suppliers') OR (toLower(s.name) CONTAINS 'contract' OR toLower(m.metric_type) CONTAINS 'contract') OR (toLower(s.name) CONTAINS '2023' OR toLower(m.metric_type) CONTAINS '2023')\n            OPTIONAL MATCH (s)-[:IN_REGION]->(r:Region)\n            OPTIONAL MATCH (s)-[:HAS_CLIMATE]->(c:Climate)\n            OPTIONAL MATCH (s)-[:IN_BELT]->(b:AgriculturalBelt)\n            RETURN s.name as state,\n                   m.metric_type as metric,\n                   m.year as year,\n                   m.value as value,\n                   r.name as region,\n                   c.name as climate,\n                   b.name as ag_belt\n            ORDER BY m.year DESC, m.value DESC\n            LIMIT 50\n        ".lower
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating Cypher for query type: general\n", "record": {"elapsed": {"repr": "0:00:02.045240", "seconds": 2.04524}, "exception": null, "extra": {}, "file": {"name": "cypher_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/cypher_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 106, "message": "Generating Cypher for query type: general", "module": "cypher_query_generator", "name": "app.services.cypher_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.080396+08:00", "timestamp": 1756078813.080396}}}
+_____________ TestKeywordExtractor.test_identify_prediction_query ______________
+tests/unit/test_keyword_extractor.py:126: in test_identify_prediction_query
+    assert query_type == "prediction"
+E   AssertionError: assert 'trend_analysis' == 'prediction'
+E     
+E     - prediction
+E     + trend_analysis
+_____________ TestSQLQueryGenerator.test_location_query_generation _____________
+tests/unit/test_sql_generator.py:102: in test_location_query_generation
+    assert "iowa" in sql
+E   AssertionError: assert 'iowa' in '\n                    select \n                        f1.name as farm_name,\n                        f1.location,\n                        f1.county,\n                        f1.state,\n                        f1.primary_crop,\n                        f1.size_acres,\n                        st_distance(\n                            st_makepoint(f1.longitude, f1.latitude)::geography,\n                            st_makepoint(f2.longitude, f2.latitude)::geography\n                        ) / 1609.344 as distance_miles\n                    from farms f1, farms f2\n                    where f1.id != f2.id\n                        and st_dwithin(\n                            st_makepoint(f1.longitude, f1.latitude)::geography,\n                            st_makepoint(f2.longitude, f2.latitude)::geography,\n                            80467.2  -- convert miles to meters\n                        )\n                    order by distance_miles asc\n                    limit 50\n                '
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating SQL for query type: location_based\n", "record": {"elapsed": {"repr": "0:00:02.063171", "seconds": 2.063171}, "exception": null, "extra": {}, "file": {"name": "sql_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/sql_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 114, "message": "Generating SQL for query type: location_based", "module": "sql_query_generator", "name": "app.services.sql_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.098327+08:00", "timestamp": 1756078813.098327}}}
+_____________ TestSQLQueryGenerator.test_spatial_query_generation ______________
+tests/unit/test_sql_generator.py:203: in test_spatial_query_generation
+    assert "st_distance" in sql or "distance" in sql
+E   assert ('st_distance' in "\n                select \n                    f.id,\n                    f.name,\n                    f.location,\n                    f.primary_crop,\n                    f.size_acres,\n                    f.state,\n                    f.county\n                from farms f\n                where (lower(f.name) like lower('%farms%') or lower(f.location) like lower('%farms%') or lower(f.primary_crop) like lower('%farms%') or lower(f.state) like lower('%farms%')) or (lower(f.name) like lower('%within%') or lower(f.location) like lower('%within%') or lower(f.primary_crop) like lower('%within%') or lower(f.state) like lower('%within%')) or (lower(f.name) like lower('%50%') or lower(f.location) like lower('%50%') or lower(f.primary_crop) like lower('%50%') or lower(f.state) like lower('%50%')) or (lower(f.name) like lower('%miles%') or lower(f.location) like lower('%miles%') or lower(f.primary_crop) like lower('%miles%') or lower(f.state) like lower('%miles%'))\n                order by f.size_acres desc\n                limit 50\n            " or 'distance' in "\n                select \n                    f.id,\n                    f.name,\n                    f.location,\n                    f.primary_crop,\n                    f.size_acres,\n                    f.state,\n                    f.county\n                from farms f\n                where (lower(f.name) like lower('%farms%') or lower(f.location) like lower('%farms%') or lower(f.primary_crop) like lower('%farms%') or lower(f.state) like lower('%farms%')) or (lower(f.name) like lower('%within%') or lower(f.location) like lower('%within%') or lower(f.primary_crop) like lower('%within%') or lower(f.state) like lower('%within%')) or (lower(f.name) like lower('%50%') or lower(f.location) like lower('%50%') or lower(f.primary_crop) like lower('%50%') or lower(f.state) like lower('%50%')) or (lower(f.name) like lower('%miles%') or lower(f.location) like lower('%miles%') or lower(f.primary_crop) like lower('%miles%') or lower(f.state) like lower('%miles%'))\n                order by f.size_acres desc\n                limit 50\n            ")
+------------------------------ Captured log setup ------------------------------
+DEBUG    asyncio:selector_events.py:54 Using selector: KqueueSelector
+----------------------------- Captured stdout call -----------------------------
+{"text": "Generating SQL for query type: general\n", "record": {"elapsed": {"repr": "0:00:02.069306", "seconds": 2.069306}, "exception": null, "extra": {}, "file": {"name": "sql_query_generator.py", "path": "/Users/brice/Ontology-Pipeline/backend/app/services/sql_query_generator.py"}, "function": "generate", "level": {"icon": "ℹ️", "name": "INFO", "no": 20}, "line": 114, "message": "Generating SQL for query type: general", "module": "sql_query_generator", "name": "app.services.sql_query_generator", "process": {"id": 41030, "name": "MainProcess"}, "thread": {"id": 8251439808, "name": "MainThread"}, "time": {"repr": "2025-08-25 07:40:13.104462+08:00", "timestamp": 1756078813.104462}}}
+=============================== warnings summary ===============================
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/fields.py:1093: 37 warnings
+  /Users/brice/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/fields.py:1093: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'env'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    warn(
+
+app/core/config.py:92
+  /Users/brice/Ontology-Pipeline/backend/app/core/config.py:92: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    @validator("encryption_enabled", pre=True)
+
+app/core/config.py:98
+  /Users/brice/Ontology-Pipeline/backend/app/core/config.py:98: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    @validator("encryption_key", pre=True)
+
+app/core/config.py:105
+  /Users/brice/Ontology-Pipeline/backend/app/core/config.py:105: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    @validator("gitlab_runner_tags", pre=True)
+
+app/core/config.py:111
+  /Users/brice/Ontology-Pipeline/backend/app/core/config.py:111: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    @validator("secret_key", pre=True, always=True)
+
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:323
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:323
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:323
+  /Users/brice/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:323: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+app/models/schemas.py:26
+  /Users/brice/Ontology-Pipeline/backend/app/models/schemas.py:26: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+    @validator("query")
+
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:373
+tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_api_documentation
+  /Users/brice/.pyenv/versions/3.11.9/lib/python3.11/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+  * 'schema_extra' has been renamed to 'json_schema_extra'
+    warnings.warn(message, UserWarning)
+
+main.py:36
+  /Users/brice/Ontology-Pipeline/backend/main.py:36: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/fastapi/applications.py:4495
+../../.pyenv/versions/3.11.9/lib/python3.11/site-packages/fastapi/applications.py:4495
+  /Users/brice/.pyenv/versions/3.11.9/lib/python3.11/site-packages/fastapi/applications.py:4495: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+main.py:65
+  /Users/brice/Ontology-Pipeline/backend/main.py:65: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("shutdown")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_api_endpoints.py::TestAPIEndpoints::test_search_endpoint_valid_query
+FAILED tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_collect_aggregation
+FAILED tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_comparison_query
+FAILED tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_explain_query
+FAILED tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_multi_hop_traversal
+FAILED tests/unit/test_cypher_generator.py::TestCypherQueryGenerator::test_relationship_properties
+FAILED tests/unit/test_keyword_extractor.py::TestKeywordExtractor::test_identify_prediction_query
+FAILED tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_location_query_generation
+FAILED tests/unit/test_sql_generator.py::TestSQLQueryGenerator::test_spatial_query_generation
+================== 9 failed, 66 passed, 51 warnings in 0.88s ===================

@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './gradient.css';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Gradient styles moved to gradient.css */
+
+/* Typewriter cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: currentColor;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+/* Smooth scrollbar for results panels */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ASCII Table Styles */
+.ascii-table {
+  font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: pre;
+  color: #1a1a1a;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Ensure tables scroll horizontally on small screens */
+.ascii-table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.ascii-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.ascii-table::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 3px;
+}
+
+.ascii-table::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* Analysis Section Styles - Constrained width for readability */
+.analysis-section {
+  max-width: 80ch; /* ~80 characters wide for optimal reading */
+  line-height: 1.7;
+  margin: 0 auto; /* Center if narrower than container */
+  padding: 0 1rem;
+  color: #1a1a1a;
+}
+
+/* Ensure headers stand out */
+.analysis-section.font-semibold {
+  font-weight: 600;
+  color: #333;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* On medium screens, reduce max width slightly */
+@media (max-width: 1024px) {
+  .analysis-section {
+    max-width: 70ch;
+  }
+}
+
+/* On small screens, use full width */
+@media (max-width: 768px) {
+  .analysis-section {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}

@@ -1,0 +1,69 @@
+/* Stripe-style smooth fluid gradient animation */
+.fluid-gradient-bg {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #1a2332 0%, #1e4e2e 100%);
+  overflow: hidden;
+}
+
+.fluid-gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(33, 96, 243, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(58, 139, 74, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(45, 107, 61, 0.3) 0%, transparent 60%);
+  animation: gradient-animation 25s ease infinite;
+  filter: blur(100px);
+  transform: translate(0, 0) rotate(0deg);
+}
+
+.fluid-gradient-bg::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at 60% 60%, rgba(30, 78, 46, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 30% 30%, rgba(33, 96, 243, 0.3) 0%, transparent 60%);
+  animation: gradient-animation-reverse 30s ease infinite;
+  filter: blur(120px);
+  transform: translate(0, 0) rotate(0deg);
+}
+
+@keyframes gradient-animation {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-5%, 10%) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(5%, -5%) rotate(180deg) scale(1);
+  }
+  75% {
+    transform: translate(10%, 5%) rotate(270deg) scale(0.95);
+  }
+}
+
+@keyframes gradient-animation-reverse {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(10%, -5%) rotate(-90deg) scale(0.95);
+  }
+  50% {
+    transform: translate(-5%, 10%) rotate(-180deg) scale(1.05);
+  }
+  75% {
+    transform: translate(-10%, -10%) rotate(-270deg) scale(1);
+  }
+}
