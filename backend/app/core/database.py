@@ -18,35 +18,35 @@ class SupabaseClient:
 
     def __init__(self):
         self.client: Optional[Client] = None
+        self.url = None
+        self.key = None
+        
+    async def initialize(self) -> bool:
+        """Initialize Supabase client."""
+        try:
+            # Get fresh values from settings (now decrypted!)
+            self.url = settings.supabase_url
+            self.key = settings.supabase_anon_key or settings.supabase_service_key
+            
+            print(f"DEBUG INIT: URL = {self.url}")
+            print(f"DEBUG INIT: Key = {self.key[:20]}..." if self.key else "No key")
 
-        # Don't capture settings here - they're not ready yet!
-        async def initialize(self) -> bool:
-            """Initialize Supabase client."""
-            try:
-                # Get fresh values from settings (now decrypted!)
-                self.url = settings.supabase_url
-                self.key = settings.supabase_anon_key or settings.supabase_service_key
-
-                print(f"DEBUG INIT: URL = {self.url}")
-                print(f"DEBUG INIT: Key = {self.key[:20]}..." if self.
-                      key else "No key")
-
-                if not self.url or not self.key:
-                    app_logger.warning("Supabase credentials not configured")
-                    print("DEBUG: Returning False - missing credentials")
-                    return False
-
-                print("DEBUG: About to create_client")
-                self.client = create_client(self.url, self.key)
-                print(f"DEBUG: Client created = {self.client}")
-                app_logger.info("Supabase client initialized successfully")
-                print("DEBUG: Returning True - success")
-                return True
-
-            except Exception as e:
-                app_logger.error(f"Failed to initialize Supabase client: {e}")
-                print(f"DEBUG EXCEPTION: {e}")
+            if not self.url or not self.key:
+                app_logger.warning("Supabase credentials not configured")
+                print("DEBUG: Returning False - missing credentials")
                 return False
+
+            print("DEBUG: About to create_client")
+            self.client = create_client(self.url, self.key)
+            print(f"DEBUG: Client created = {self.client}")
+            app_logger.info("Supabase client initialized successfully")
+            print("DEBUG: Returning True - success")
+            return True
+
+        except Exception as e:
+            app_logger.error(f"Failed to initialize Supabase client: {e}")
+            print(f"DEBUG EXCEPTION: {e}")
+            return False
 
     async def health_check(self) -> bool:
         """Check Supabase connection health."""
@@ -419,7 +419,11 @@ class Neo4jClient:
 
 class DatabaseManager:
     """Manages both database connections."""
-
+    @property
+    def supabase_client(self):
+      """Get the actual Supabase client for backward compatibility."""
+      return self.supabase.client
+          
     def __init__(self):
         self.supabase = SupabaseClient()
         self.neo4j = Neo4jClient()
