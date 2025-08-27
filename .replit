@@ -1,15 +1,28 @@
 run = "cd backend && pip install -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8000"
-modules = ["python-3.11"]
+modules = ["nodejs-20", "python-3.11"]
 
 [nix]
 channel = "stable-23_11"
+packages = [
+  "cargo",
+  "libiconv",
+  "libxcrypt",
+  "openssl",
+  "pkg-config",
+  "postgresql",
+  "rustc",
+]
 
 [deployment]
-run = ["sh", "-c", "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+run = [
+  "sh",
+  "-c",
+  "cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000",
+]
 
 [[ports]]
 localPort = 8000
 externalPort = 80
 
 [env]
-PYTHONPATH = "${REPL_HOME}/backend"
+ENVIRONMENT = "production"
