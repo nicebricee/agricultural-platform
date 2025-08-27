@@ -16,10 +16,14 @@ sys.path.append(str(Path(__file__).parent.parent.parent))
 try:
     from app.core.encryption import decrypt_env_value
 except ImportError:
-    decrypt_env_value = None
+    try:
+        from core.encryption import decrypt_env_value
+    except ImportError:
+        decrypt_env_value = None
 
 
 class Settings(BaseSettings):
+    _decryption_done = False  # Add this class variable to track decryption state
     """Application settings loaded from environment variables with encryption support."""
 
     # Encryption Configuration
@@ -125,19 +129,51 @@ class Settings(BaseSettings):
 
     def __init__(self, **kwargs):
         """Initialize settings with support for encrypted values."""
-        # CRITICAL: Clear ALL potentially cached environment variables
-        # This prevents Claude Code and system-level env pollution
+        # CRITICAL: Prevent multiple clearing passes
         import os
+
+        # Check if already initialized
+        if os.environ.get('_SETTINGS_INITIALIZED') == 'true':
+            print(
+                "_SETTINGS_INITIALIZED already set, skipping ALL initialization"
+            )
+            super().__init__(**kwargs)
+            # DON'T do any clearing or decryption - it's already done!
+            return  # EXIT completely
+
+        # If we get here, this is the FIRST initialization
+        os.environ['_SETTINGS_INITIALIZED'] = 'true'
+        print("First initialization - proceeding with setup")
+
+        # NOW do clearing (only happens once)
         problematic_vars = [
             'OPENAI_API_KEY', 'OPENAI_MODEL', 'OPENAI_MAX_TOKENS',
             'SUPABASE_URL', 'SUPABASE_ANON_KEY', 'SUPABASE_SERVICE_KEY',
             'NEO4J_URI', 'NEO4J_USERNAME', 'NEO4J_PASSWORD'
         ]
 
-        for var in problematic_vars:
-            if var in os.environ:
-                print(f"WARNING: Clearing cached {var} from environment")
-                del os.environ[var]
+        # Add a flag to prevent re-clearing after decryption
+        if not Settings._decryption_done:
+            for var in problematic_vars:
+                if var in os.environ:
+                    value = os.environ[var]
+                    # Skip if it's encrypted OR looks like a real API key
+                    if (value.startswith('MLENC:') or value.startswith('ENC:')
+                            or value.startswith('sk-') or  # OpenAI keys
+                            value.startswith('eyJ') or  # JWT tokens (Supabase)
+                            value.startswith('neo4j')
+                            or  # Neo4j connection strings
+                            value.startswith('http') or  # URLs (http/https)
+                            '.supabase.co' in value or  # Supabase URLs
+                            var in ['SUPABASE_URL', 'NEO4J_URI'
+                                    ] or  # Explicitly keep these
+                            len(value)
+                            > 30):  # Long strings are likely API keys
+                        print(f"DEBUG: Keeping {var} (encrypted or valid key)")
+                    else:
+                        print(
+                            f"WARNING: Clearing cached {var} from environment")
+                        del os.environ[var]
 
         # Force correct max_tokens
         os.environ['OPENAI_MAX_TOKENS'] = '3000'
@@ -147,6 +183,9 @@ class Settings(BaseSettings):
         # Force max_tokens after loading
         self.openai_max_tokens = 3000
 
+        print(f"DEBUG: Encryption method = {self.encryption_method}")
+        print(f"DEBUG: MLENC key exists = {bool(self.mlenc_key)}")
+
         # Decrypt credentials based on encryption method
         if self.encryption_method == "MLENC" and self.mlenc_key:
             self._decrypt_mlenc_credentials()
@@ -155,6 +194,9 @@ class Settings(BaseSettings):
 
     def _decrypt_mlenc_credentials(self):
         """Decrypt MLENC-encrypted credentials."""
+        print("DEBUG: Starting MLENC decryption")
+        print(f"DEBUG: MLENC_KEY = {self.mlenc_key[:10]}..." if self.
+              mlenc_key else "No MLENC key")
         try:
             from app.core.mlenc import mlenc_decrypt
         except ImportError:
@@ -168,13 +210,31 @@ class Settings(BaseSettings):
         ]
 
         for field_name in encrypted_fields:
+            import os
+            # Try both the attribute AND the environment variable
             value = getattr(self, field_name, None)
+            if not value:
+                # Try uppercase environment variable name
+                env_var_name = field_name.upper()
+                value = os.environ.get(env_var_name)
+
             if value and isinstance(value, str) and value.startswith('MLENC:'):
+                print(f"DEBUG: Found encrypted {field_name}")
+                print(f"DEBUG: Value starts with: {value[:20]}...")
                 try:
                     decrypted = mlenc_decrypt(value, self.mlenc_key)
+                    print(f"DEBUG: Successfully decrypted {field_name}")
+                    # Set the attribute on the Settings object
                     setattr(self, field_name, decrypted)
+                    # Also update the environment variable if needed
+                    if not value:
+                        env_var_name = field_name.upper()
+                        os.environ[env_var_name] = decrypted
                 except Exception as e:
-                    print(f"Warning: Failed to decrypt {field_name}: {e}")
+                    print(
+                        f"DEBUG ERROR: Failed to decrypt {field_name}: {str(e)}"
+                    )
+        Settings._decryption_done = True
 
     def _decrypt_credential(self, encrypted_name: str, target_attr: str):
         """Decrypt a single credential if it exists in encrypted form."""
