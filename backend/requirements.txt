@@ -4,7 +4,7 @@ uvicorn[standard]
 python-multipart
 
 # Database Clients  
-supabase
+supabase==2.0.0
 neo4j
 asyncpg
 
